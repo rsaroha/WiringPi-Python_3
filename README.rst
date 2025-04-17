@@ -1,10 +1,11 @@
-:Warning: WiringPi was deprecated by its author in August 2019. As of 31st October 2023 nobody has shown an interest in properly maintaining it. Between this, and changes to GPIO in Rasberry Pi OS Bookworm and on the Raspberry Pi 5, this project is going nowhere. It has been archived to more clearly indicate this status.
 
-Note
+:Warning . Not tested much but was able to compile gpio sample code in python and got same output as gpio from WiringPi
+
+
+Note:
 ~~~~
 
-This is an unofficial port of Gordon's WiringPi library. Please do not
-email Gordon if you have issues, he will not be able to help.
+This is an unofficial port of Current WiringPi library to python. 
 
 For support, comments, questions, etc please join the WiringPi Discord
 channel: https://discord.gg/SM4WUVG
@@ -24,13 +25,44 @@ WiringPi implements new functions for managing IO expanders.
 Quick Install
 =============
 
-.. image:: https://badge.fury.io/py/wiringpi.svg
-   :alt: PyPI version badge
-   :target: https://pypi.org/project/wiringpi/
+Not available. But you can pull the respository and compile it locally.
 
-The library is packaged on PyPI and can be installed with pip:
 
-``pip install wiringpi``
+Manual Build
+============
+
+Get/setup repo
+--------------
+
+.. code:: bash
+
+    git clone --recursive https://github.com/WiringPi/WiringPi-Python.git
+    cd WiringPi-Python
+
+Don't forget the ``--recursive``; it is required to also pull in the
+WiringPi C code from its own repository.
+
+Prerequisites
+-------------
+
+To rebuild the bindings you **must** first have installed ``swig``,
+``python-dev``, and ``python-setuptools`` (or their ``python3-``
+equivalents). WiringPi should also be installed system-wide for access
+to the ``gpio`` tool.
+
+.. code:: bash
+
+    sudo apt-get install python-dev python-setuptools swig wiringpi
+
+Build & install with
+--------------------
+
+``sudo python setup.py install``
+
+Or Python 3:
+
+``sudo python3 setup.py install``
+
 
 Usage
 =====
@@ -117,38 +149,5 @@ Python 2, because then ``buf`` is a string, and strings are immutable).
 
 **Full details of the API at:** http://www.wiringpi.com
 
-Manual Build
-============
 
-Get/setup repo
---------------
-
-.. code:: bash
-
-    git clone --recursive https://github.com/WiringPi/WiringPi-Python.git
-    cd WiringPi-Python
-
-Don't forget the ``--recursive``; it is required to also pull in the
-WiringPi C code from its own repository.
-
-Prerequisites
--------------
-
-To rebuild the bindings you **must** first have installed ``swig``,
-``python-dev``, and ``python-setuptools`` (or their ``python3-``
-equivalents). WiringPi should also be installed system-wide for access
-to the ``gpio`` tool.
-
-.. code:: bash
-
-    sudo apt-get install python-dev python-setuptools swig wiringpi
-
-Build & install with
---------------------
-
-``sudo python setup.py install``
-
-Or Python 3:
-
-``sudo python3 setup.py install``
 
